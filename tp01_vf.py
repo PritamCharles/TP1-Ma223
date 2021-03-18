@@ -271,7 +271,7 @@ def GaussChoixPivotTotal(A, B):
 
 def graphique_LU():
     liste_temps_LU = []
-    print("temps ...")
+    print("temps LU...")
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
         B = np.random.rand(i, 1)
@@ -285,7 +285,7 @@ def graphique_LU():
         liste_temps_LU.append(temps_exe_LU)
 
     liste_normes_LU = []
-    print("normes ...")
+    print("normes LU...")
     for i in range(3, 1003, 100):
         Aa = np.random.rand(i, i)
         B = np.random.rand(i, 1)
@@ -324,7 +324,7 @@ def graphique_LU():
 
 def graphique_gauss():
     liste_temps_Gauss = []
-    print("temps ...")
+    print("temps Gauss...")
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
         B = np.random.rand(i, 1)
@@ -336,7 +336,7 @@ def graphique_gauss():
         liste_temps_Gauss.append(temps_exe_Gauss)
 
     liste_normes_Gauss = []
-    print("normes ...")
+    print("normes Gauss...")
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
         B = np.random.rand(i, 1)
@@ -372,7 +372,7 @@ def graphique_gauss():
 
 def graphique_pivot_partiel():
     liste_temps_pivot_partiel = []
-    print("temps...")
+    print("temps pivot partiel...")
     for i in range(3, 1003, 100):
         print(i)
         A = np.random.rand(i, i)
@@ -385,7 +385,7 @@ def graphique_pivot_partiel():
         liste_temps_pivot_partiel.append(temps_exe_pivot_partiel)
 
     liste_normes_pivot_partiel = []
-    print("normes...")
+    print("normes pivot partiel...")
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
         B = np.random.rand(i, 1)
@@ -421,7 +421,7 @@ def graphique_pivot_partiel():
 
 def graphique_pivot_total():
     liste_temps_pivot_total = []
-    print("temps ...")
+    print("temps pivot total...")
 
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
@@ -433,7 +433,7 @@ def graphique_pivot_total():
         liste_temps_pivot_total.append(temps_exe_pivot_total)
 
     liste_normes_pivot_total = []
-    print("normes ...")
+    print("normes pivot total...")
 
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
@@ -470,7 +470,7 @@ def graphique_pivot_total():
 
 def graphique_linalgsolve():
     liste_temps_linalgsolve = []
-    print("temps ...")
+    print("temps lialg.solve...")
 
     for i in range(3, 1003, 100):
         A = np.random.rand(i, i)
@@ -515,7 +515,55 @@ def graphique_linalgsolve():
     plt.grid()
     plt.savefig("linalg.solve.png")
     plt.show()
+    
 
+    def graphique_linalglstsq():
+    liste_temps_linalglstsq = []
+    print("temps linalg.lstsq...")
+
+    for i in range(3, 1003, 100):
+        A = np.random.rand(i, i)
+        B = np.random.rand(i, 1)
+        debut = time.time()
+        np.linalg.lstsq(A, B)
+        fin = time.time()
+        temps_exe_linalglstsq = fin - debut
+        liste_temps_linalglstsq.append(temps_exe_linalglstsq)
+
+    liste_normes_linalglstsq = []
+
+    for i in range(3, 1003, 10):
+        print("normes np.linalg.lstsq, n=", i)
+        A = np.random.rand(i, i)
+        B = np.random.rand(i, 1)
+        X = np.linalg.lstsq(A, B, rcond=None)[0]
+        normes_linalglstsq = np.linalg.norm(np.dot(A, X) - B)
+        liste_normes_linalglstsq.append(normes_linalglstsq)
+
+    print("graphique linalglstsq ...")
+    plt.figure(figsize=(15, 9))
+    plt.subplot(2, 1, 1)
+    x = np.linspace(0, 1003, 10)
+    y = np.linspace(0, 1, 10)
+    plt.plot(x, liste_temps_linalgsolve, label="np.linalg.lstsq", c="pink")
+    plt.xlabel("Taille de la matrice n")
+    plt.ylabel("Temps d'exécution (en s)")
+    plt.title(
+        "Graphique représentant le temps d'exécution de la méthode linalg.lstsq de Numpy en fonction de la taille de la matrice")
+    plt.legend()
+    plt.grid()
+
+    plt.subplot(2, 1, 2)
+    plt.semilogy(x, liste_normes_linalgsolve, label="np.linalg.lstsq", c="pink")
+    plt.xlabel("Taille de la matrice n")
+    plt.ylabel("Erreur ||AX - B||")
+    plt.title(
+        "Graphique représentant l'erreur ||AX - B|| de la méthode linalg.lstsq de Numpy en fonction de la taille de la matrice")
+    plt.legend()
+    plt.grid()
+    plt.savefig("linalg.lstsq.png")
+    plt.show()
+ 
 
 def graphique_all():
     liste_temps_LU = []
@@ -739,5 +787,6 @@ def graphique_all_loglog():
 # graphique_pivot_partiel()
 # graphique_pivot_total()
 # graphique_linalgsolve()
+# graphique_linalglstsq()
 # graphique_all()
 # graphique_all_loglog()
