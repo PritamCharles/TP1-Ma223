@@ -35,7 +35,7 @@ print(tp01.Gauss(A, B), "\n")
 print(tp01.DecompositionLU(np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])), "\n")
 
 # Question 2
-A = np.array([[2, 5], [4, 9], [-2, -8]])
+A = np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])
 L = tp01.DecompositionLU(A)[0]
 U = tp01.DecompositionLU(A)[1]
 B = np.array([[7], [12], [3]])
