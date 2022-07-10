@@ -1,39 +1,42 @@
+from src.gauss_method import GaussMethod
+from src.lu_method import LUMethod
 import numpy as np
-import src.gauss_method as gm
-import src.lu_method as lm
 
-# Partie 1
-# Question 1
-print(tp01.ReductionGauss(np.array([[2, 5, 6, 7], [4, 11, 9, 12], [-2, -8, 7, 3]])), "\n")
+gauss = GaussMethod()
+lu = LUMethod()
 
-# Question 2
-print(tp01.ResolutionSysTriSup(tp01.ReductionGauss(np.array([[2, 5, 6, 7], [4, 11, 9, 12], [-2, -8, 7, 3]]))), "\n")
+print("Partie 1")
+print("Question 1")
+print(gauss.GaussReduction(np.array([[2, 5, 6, 7], [4, 11, 9, 12], [-2, -8, 7, 3]])), "\n")
 
-# Question 3
+print("Question 2")
+print(gauss.SysTriSupResolution(gauss.GaussReduction(np.array([[2, 5, 6, 7], [4, 11, 9, 12], [-2, -8, 7, 3]]))), "\n")
+
+print("Question 3")
 A = np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])
 B = np.array([[7], [12], [3]])
-print(tp01.Gauss(A, B), "\n")
+print(gauss.Gauss(A, B), "\n")
 
 
-# Partie 2
-# Question 1
-print(tp01.DecompositionLU(np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])), "\n")
+print("Partie 2")
+print("Question 1")
+print(lu.LUDecomposition(np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])), "\n")
 
-# Question 2
+print("Question 2")
 A = np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])
-L = tp01.DecompositionLU(A)[0]
-U = tp01.DecompositionLU(A)[1]
+L = lu.LUDecomposition(A)[0]
+U = lu.LUDecomposition(A)[1]
 B = np.array([[7], [12], [3]])
-print(tp01.ResolutionLU(L, U, B), "\n")
+print(lu.LUResolution(L, U, B), "\n")
 
 
-# Partie 3
-# Question 1
-A = np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])
-B = np.array([[7], [12], [3]])
-print(tp01.GaussChoixPivotPartiel(A, B), "\n")
-
-# Question 2
+print("Partie 3")
+print("Question 1")
 A = np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])
 B = np.array([[7], [12], [3]])
-print(tp01.GaussChoixPivotTotal(A, B))
+print(gauss.GaussPartialPivotChoice(A, B), "\n")
+
+print("Question 2")
+A = np.array([[2, 5, 6], [4, 11, 9], [-2, -8, 7]])
+B = np.array([[7], [12], [3]])
+print(gauss.GaussTotalPivotChoice(A, B))
