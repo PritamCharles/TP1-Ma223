@@ -31,7 +31,7 @@ class Chart:
             plt.grid()
 
         elif not self.all_in_one:
-            plt.subplot(2, 1, 2)
+            plt.subplot(2, 1, 1)
             plt.plot(list_xvalues1, list_yvalues1, label=list_labels)
             plt.title(title_list[0])
             plt.xlabel(axis_labels[0])
@@ -40,7 +40,7 @@ class Chart:
             plt.grid()
 
             plt.subplot(2, 1, 2)
-            plt.plot(list_xvalues1, list_yvalues1, label=list_labels)
+            plt.plot(list_xvalues2, list_yvalues2, label=list_labels)
             plt.title(title_list[1])
             plt.xlabel(axis_labels[0])
             plt.ylabel(axis_labels[2])
