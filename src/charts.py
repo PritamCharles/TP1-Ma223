@@ -42,8 +42,8 @@ class Chart:
         plt.figure(figsize=(15, 9))
 
         plt.subplot(2, 1, 1)
-        for i, j, k, l in itertools.zip_longest(range(nb_plots - 1), range(nb_plots - 1), range(nb_plots - 1),
-                                                range(nb_plots - 1), fillvalue=""):
+        for i, j, k, l in itertools.zip_longest(range(nb_plots), range(nb_plots), range(nb_plots),
+                                                range(nb_plots), fillvalue=""):
             plt.plot(list_xvalues1[j], list_yvalues1[k], label=list_labels[l])
 
         plt.title(self.title[0])
@@ -53,8 +53,8 @@ class Chart:
         plt.grid()
 
         plt.subplot(2, 1, 2)
-        for i, j, k, l in itertools.zip_longest(range(nb_plots - 1), range(nb_plots - 1), range(nb_plots - 1),
-                                                range(nb_plots - 1), fillvalue=""):
+        for i, j, k, l in itertools.zip_longest(range(nb_plots), range(nb_plots), range(nb_plots),
+                                                range(nb_plots), fillvalue=""):
             plt.semilogy(list_xvalues2[j], list_yvalues2[k], label=list_labels[l])
 
         plt.title(self.title[1])

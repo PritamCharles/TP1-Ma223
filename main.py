@@ -111,7 +111,7 @@ class GetPlots:
 
 
 ###
-plots = GetPlots(array_minsize=3, array_maxsize=203, step=50)
+plots = GetPlots(array_minsize=3, array_maxsize=353, step=50)
 
 xlist = [plots.get_xplots(), plots.get_xplots(), plots.get_xplots(), plots.get_xplots(), plots.get_xplots()]
 yplots_gauss = [plots.get_yplots_gauss()[0], plots.get_yplots_gauss()[1]]
@@ -138,22 +138,22 @@ chart3 = Chart(title=titles_list_tp, alabels=axis_labels)
 chart4 = Chart(title=titles_list_lu, alabels=axis_labels)
 chart5 = Chart(title=titles_list_np, alabels=axis_labels)
 
-#chart1.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[0], list_xvalues2=xlist[0], list_yvalues2=ynormslist[0], list_labels=labels_list[0])
-#chart1.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[0])
+chart1.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[0], list_xvalues2=xlist[0], list_yvalues2=ynormslist[0], list_labels=labels_list[0])
+chart1.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[0])
 
-#chart2.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[1], list_xvalues2=xlist[0], list_yvalues2=ynormslist[1], list_labels=labels_list[1])
-#chart2.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[1])
+chart2.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[1], list_xvalues2=xlist[0], list_yvalues2=ynormslist[1], list_labels=labels_list[1])
+chart2.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[1])
 
-#chart3.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[2], list_xvalues2=xlist[0], list_yvalues2=ynormslist[2], list_labels=labels_list[2])
-#chart3.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[2])
+chart3.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[2], list_xvalues2=xlist[0], list_yvalues2=ynormslist[2], list_labels=labels_list[2])
+chart3.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[2])
 
-#chart4.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[3], list_xvalues2=xlist[0], list_yvalues2=ynormslist[3], list_labels=labels_list[3])
-#chart4.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[3])
+chart4.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[3], list_xvalues2=xlist[0], list_yvalues2=ynormslist[3], list_labels=labels_list[3])
+chart4.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[3])
 
-#chart5.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[4], list_xvalues2=xlist[0], list_yvalues2=ynormslist[4], list_labels=labels_list[4])
-#chart5.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[4])
+chart5.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[4], list_xvalues2=xlist[0], list_yvalues2=ynormslist[4], list_labels=labels_list[4])
+chart5.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[4])
 
 
-# All in one charts
+# All in one chart
 chart6 = Chart(title=titles_list_all, alabels=axis_labels)
-#chart6.plot_all(nb_plots=5, list_xvalues1=xlist, list_yvalues1=ytimeslist, list_xvalues2=xlist, list_yvalues2=ynormslist, list_labels=labelslist)
+chart6.plot_all(nb_plots=5, list_xvalues1=xlist, list_yvalues1=ytimeslist, list_xvalues2=xlist, list_yvalues2=ynormslist, list_labels=labels_list)
