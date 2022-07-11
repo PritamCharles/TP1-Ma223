@@ -3,48 +3,64 @@ import itertools
 
 
 class Chart:
-    def __init__(self, all_in_one, xlabel=None, ylabel=None, purpose=None, title=None):
-        self.all_in_one = all_in_one
-        self.purpose = purpose
+    def __init__(self, title, alabels):
         self.title = title
-        self.xlabel = xlabel
-        self.ylabel = ylabel
+        self.axis_labels = alabels
 
-    def plot(self, list_xvalues1, list_yvalues1, list_labels, nb_plots=1, list_xvalues2=None, list_yvalues2=None, title_list=None, axis_labels=None):
+    def plot_log(self, list_xvalues, list_yvalues, list_labels):
+        plt.figure(figsize=(15, 9))
+        plt.plot(list_xvalues, list_yvalues, label=list_labels)
+        plt.title(self.title[0])
+        plt.xlabel(self.axis_labels[3])
+        plt.ylabel(self.axis_labels[4])
+        plt.legend()
+        plt.grid()
+        plt.show()
+
+    def plot(self, list_xvalues1, list_yvalues1, list_labels, list_xvalues2=None, list_yvalues2=None):
         plt.figure(figsize=(15, 9))
 
-        if self.all_in_one:
-            plt.subplot(2, 1, 1)
-            for i, j, k, l in itertools.zip_longest(range(nb_plots - 1), range(nb_plots - 1), range(nb_plots - 1),
-                                                    range(nb_plots - 1), fillvalue=""):
-                plt.plot(list_xvalues1[j], list_yvalues1[k], label=list_labels[l])
-                plt.title("Temps d'execution des differentes methodes en fonction de la taille de la matrice")
-            plt.legend()
-            plt.grid()
+        plt.subplot(2, 1, 1)
+        plt.plot(list_xvalues1, list_yvalues1, label=list_labels)
+        plt.title(self.title[0])
+        plt.xlabel(self.axis_labels[0])
+        plt.ylabel(self.axis_labels[1])
+        plt.legend()
+        plt.grid()
 
-            plt.subplot(2, 1, 2)
-            for i, j, k, l in itertools.zip_longest(range(nb_plots - 1), range(nb_plots - 1), range(nb_plots - 1),
-                                                    range(nb_plots - 1), fillvalue=""):
-                plt.plot(list_xvalues2[j], list_yvalues2[k], label=list_labels[l])
-                plt.title("Normes des differentes methodes en fonction de la taille de la matrice")
-            plt.legend()
-            plt.grid()
+        plt.subplot(2, 1, 2)
+        plt.semilogy(list_xvalues2, list_yvalues2, label=list_labels)
+        plt.title(self.title[1])
+        plt.xlabel(self.axis_labels[0])
+        plt.ylabel(self.axis_labels[2])
+        plt.legend()
+        plt.grid()
 
-        elif not self.all_in_one:
-            plt.subplot(2, 1, 1)
-            plt.plot(list_xvalues1, list_yvalues1, label=list_labels)
-            plt.title(title_list[0])
-            plt.xlabel(axis_labels[0])
-            plt.ylabel(axis_labels[1])
-            plt.legend()
-            plt.grid()
+        plt.show()
 
-            plt.subplot(2, 1, 2)
-            plt.plot(list_xvalues2, list_yvalues2, label=list_labels)
-            plt.title(title_list[1])
-            plt.xlabel(axis_labels[0])
-            plt.ylabel(axis_labels[2])
-            plt.legend()
-            plt.grid()
+    def plot_all(self, list_xvalues1, list_yvalues1, list_labels, nb_plots=1, list_xvalues2=None, list_yvalues2=None):
+        plt.figure(figsize=(15, 9))
+
+        plt.subplot(2, 1, 1)
+        for i, j, k, l in itertools.zip_longest(range(nb_plots - 1), range(nb_plots - 1), range(nb_plots - 1),
+                                                range(nb_plots - 1), fillvalue=""):
+            plt.plot(list_xvalues1[j], list_yvalues1[k], label=list_labels[l])
+
+        plt.title(self.title[0])
+        plt.legend()
+        plt.xlabel(self.axis_labels[0])
+        plt.ylabel(self.axis_labels[1])
+        plt.grid()
+
+        plt.subplot(2, 1, 2)
+        for i, j, k, l in itertools.zip_longest(range(nb_plots - 1), range(nb_plots - 1), range(nb_plots - 1),
+                                                range(nb_plots - 1), fillvalue=""):
+            plt.semilogy(list_xvalues2[j], list_yvalues2[k], label=list_labels[l])
+
+        plt.title(self.title[1])
+        plt.legend()
+        plt.xlabel(self.axis_labels[0])
+        plt.ylabel(self.axis_labels[2])
+        plt.grid()
 
         plt.show()

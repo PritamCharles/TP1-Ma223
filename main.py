@@ -109,6 +109,7 @@ class GetPlots:
 
         return timeslist_npsolve, normslist_npsolve
 
+
 ###
 plots = GetPlots(array_minsize=3, array_maxsize=203, step=50)
 
@@ -121,26 +122,38 @@ yplots_np = [plots.get_yplots_np()[0], plots.get_yplots_np()[1]]
 ytimeslist = [yplots_gauss[0], yplots_pp[0], yplots_tp[0], yplots_lu[0], yplots_np[0]]
 ynormslist = [yplots_gauss[1], yplots_pp[1], yplots_tp[1], yplots_lu[1], yplots_np[1]]
 
-labelslist = ["Gauss", "Gauss Pivot partiel,", "Gauss Pivot total", "LU", "np.linalg.solve"]
-title_list1 = ["Temps d'execution de la methode de Gauss en fonction de la taille de la matrice", "Erreur ||AX -B|| de la methode de Gauss en fonction de la taille de la matrice"]
-title_list2 = ["Temps d'execution de la methode du pivot partiel en fonction de la taille de la matrice", "Erreur ||AX -B|| de la methode du pivot partiel en fonction de la taille de la matrice"]
-title_list3 = ["Temps d'execution de la methode du pivot total en fonction de la taille de la matrice", "Erreur ||AX -B|| de la methode du pivot total en fonction de la taille de la matrice"]
-title_list4 = ["Temps d'execution de la methode de LU en fonction de la taille de la matrice", "Erreur ||AX -B|| de la methode de LU en fonction de la taille de la matrice"]
-title_list5 = ["Temps d'execution de la methode linalg.solve de Numpy en fonction de la taille de la matrice", "Erreur ||AX -B|| de la methode linalg.solve de Numpy en fonction de la taille de la matrice"]
-axis_labels = ["Taille de la matrice n", "Temps d'execution (en s)", "Erreur ||AX - B||"]
+labels_list = ["Gauss", "Gauss Pivot partiel", "Gauss Pivot total", "LU", "np.linalg.solve"]
+titles_list_gauss = ["Temps d'execution de la methode de Gauss en fonction de la taille de la matrice", "Erreur ||AX - B|| de la methode de Gauss en fonction de la taille de la matrice"]
+titles_list_pp = ["Temps d'execution de la methode du pivot partiel en fonction de la taille de la matrice", "Erreur ||AX - B|| de la methode du pivot partiel en fonction de la taille de la matrice"]
+titles_list_tp = ["Temps d'execution de la methode du pivot total en fonction de la taille de la matrice", "Erreur ||AX - B|| de la methode du pivot total en fonction de la taille de la matrice"]
+titles_list_lu = ["Temps d'execution de la methode de LU en fonction de la taille de la matrice", "Erreur ||AX - B|| de la methode LU en fonction de la taille de la matrice"]
+titles_list_np = ["Temps d'execution de la methode linalg.solve de Numpy en fonction de la taille de la matrice", "Erreur ||AX - B|| de la methode linalg.solve de Numpy en fonction de la taille de la matrice"]
+titles_list_all = ["Temps d'execution des differentes methodes en fonction de la taille de la matrice", "Erreur ||AX - B|| des differentes methodes en fonction de la taille de la matrice"]
+axis_labels = ["Taille de la matrice n", "Temps d'execution (en s)", "Erreur ||AX - B||", "log Taille de la matrice n", "log Temps d'execution (en s)"]
 
 # Solo charts
-chart1 = Chart(all_in_one=False, title=title_list1, xlabel=None, ylabel=None)
-chart2 = Chart(all_in_one=False, title=title_list2, xlabel=None, ylabel=None)
-chart3 = Chart(all_in_one=False, title=title_list3, xlabel=None, ylabel=None)
-chart4 = Chart(all_in_one=False, title=title_list4, xlabel=None, ylabel=None)
-chart5 = Chart(all_in_one=False, title=title_list5, xlabel=None, ylabel=None)
-#chart1.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[0], list_xvalues2=xlist[0], list_yvalues2=ynormslist[0], list_labels=labelslist, title_list=title_list1, axis_labels=axis_labels)
-#chart2.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[1], list_xvalues2=xlist[0], list_yvalues2=ynormslist[1], list_labels=labelslist, title_list=title_list2, axis_labels=axis_labels)
-#chart3.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[2], list_xvalues2=xlist[0], list_yvalues2=ynormslist[2], list_labels=labelslist, title_list=title_list3, axis_labels=axis_labels)
-#chart4.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[3], list_xvalues2=xlist[0], list_yvalues2=ynormslist[3], list_labels=labelslist, title_list=title_list4, axis_labels=axis_labels)
-#chart5.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[4], list_xvalues2=xlist[0], list_yvalues2=ynormslist[4], list_labels=labelslist, title_list=title_list5, axis_labels=axis_labels)
+chart1 = Chart(title=titles_list_gauss, alabels=axis_labels)
+chart2 = Chart(title=titles_list_pp, alabels=axis_labels)
+chart3 = Chart(title=titles_list_tp, alabels=axis_labels)
+chart4 = Chart(title=titles_list_lu, alabels=axis_labels)
+chart5 = Chart(title=titles_list_np, alabels=axis_labels)
+
+#chart1.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[0], list_xvalues2=xlist[0], list_yvalues2=ynormslist[0], list_labels=labels_list[0])
+#chart1.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[0])
+
+#chart2.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[1], list_xvalues2=xlist[0], list_yvalues2=ynormslist[1], list_labels=labels_list[1])
+#chart2.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[1])
+
+#chart3.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[2], list_xvalues2=xlist[0], list_yvalues2=ynormslist[2], list_labels=labels_list[2])
+#chart3.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[2])
+
+#chart4.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[3], list_xvalues2=xlist[0], list_yvalues2=ynormslist[3], list_labels=labels_list[3])
+#chart4.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[3])
+
+#chart5.plot(list_xvalues1=xlist[0], list_yvalues1=ytimeslist[4], list_xvalues2=xlist[0], list_yvalues2=ynormslist[4], list_labels=labels_list[4])
+#chart5.plot_log(list_xvalues=np.log(xlist[0]), list_yvalues=np.log(ytimeslist[0]), list_labels=labels_list[4])
+
 
 # All in one charts
-chart6 = Chart(all_in_one=True, purpose="time", xlabel="Taille de la matrice n", ylabel="Temps d'exécution (en s)")
-#chart6.plot(nb_plots=5, list_xvalues1=xlist, list_yvalues1=ytimeslist, list_xvalues2=xlist, list_yvalues2=ynormslist, list_labels=labelslist)
+chart6 = Chart(title=titles_list_all, alabels=axis_labels)
+#chart6.plot_all(nb_plots=5, list_xvalues1=xlist, list_yvalues1=ytimeslist, list_xvalues2=xlist, list_yvalues2=ynormslist, list_labels=labelslist)
